@@ -113,6 +113,9 @@ document.addEventListener('DOMContentLoaded',function(){
 				x.classList.remove('img-next');
 			}
 			pic[i].classList.add('img-next');
+			for(x of pic){
+				x.classList.remove('img-current');
+			}
 			pic[i].classList.add('img-current');
 			this.classList.add('dot-current');
 			for(let j =0;j<dot.length;j++){
