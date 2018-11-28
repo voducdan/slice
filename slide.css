@@ -9,6 +9,7 @@ body{
 	width:100%;
 	height:100%;
 	position: relative;
+	overflow: hidden;
 }
 #slide .container, .face{
 	width:70%;
@@ -25,6 +26,7 @@ body{
 	position: relative;
 	border: 4px solid #54BA37;
 	box-sizing: border-box;
+	overflow: hidden;
 }
 #slide .container .picture .pic{
 	width:100%;
@@ -32,19 +34,54 @@ body{
 	position: absolute;
 	background-position: center;
 	background-size:cover;
+	opacity: 0;
+}
+#slide .container .picture .img-current{
+	opacity: 1;
+}
+#slide .container .picture .img-prev{
+	animation:toRight 1s forwards;
+}
+@-webkit-keyframes toRight{
+	from{
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to{
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+#slide .container .picture .img-next{
+	animation: toLeft 1s forwards;
+}
+@-webkit-keyframes toLeft{
+	from{
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+	to{
+		opacity: 1;
+		transform: translateX(0%);
+	}
 }
 #slide .container .picture .pic1{
-	background-image: url('images/1.jpg')
+	background-image: url('images/1.jpg');
+	background-size: cover;
 }
 #slide .container .picture .pic2{
-	background-image: url('images/2.jpg')
+	background-image: url('images/2.jpg');
+	background-size: cover;
 }
 #slide .container .picture .pic3{
-	background-image: url('images/3.jpg')
+	background-image: url('images/3.jpg');
+	background-size: cover;
 }
 #slide .container .picture .pic4{
-	background-image: url('images/4.jpg')
+	background-image: url('images/4.jpg');
+	background-size: cover;
 }
+
 .face .control-btn{
 	width: 100%;
 	height:100%;
@@ -58,26 +95,30 @@ body{
 .face .control{
 	width:55px;
 	height:55px;
-	border:1px solid white;
+	border:2px solid white;
 	border-radius: 50%;
 	background-color: transparent;
 	z-index: 999;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 
 }
 
 .face .control .play-btn, .pre-btn, .next-btn{
 	font-size:20px;
 	color:white;
+	z-index: 1000;
+	position: absolute;
 }
 .appear{
 	transform:translateY(-50%);
 	opacity: 0;
+	position: relative;
 }
 .control-btn-appear{
-	animation: appear 1s forwards;
+	animation: appear .7s forwards;
 }
 @-webkit-keyframes appear{
 	from{
@@ -102,3 +143,156 @@ body{
 		opacity: 0;
 	}
 }
+.face .appear:after{
+	content:'';
+	border-radius: 50%;
+	position: absolute;
+}
+.face .appear.fill-btn:after{
+	animation: fillbtn 1s forwards;
+} 
+@-webkit-keyframes fillbtn{
+	from{
+		background-color:transparent;
+		width:0px;
+		height:0%;
+		top:-2px;
+	}
+	to{
+		background-color: #54BA37;
+		width:107%;
+		height:107%;
+		top:-2px;
+	}
+}
+.face .appear.drop-btn:after{
+	animation: dropbtn 1s forwards;
+} 
+@-webkit-keyframes dropbtn{
+	from{
+		background-color:#54BA37;
+		width:107%;
+		height:107%;
+		top:-2px;
+	}
+	to{
+		background-color: transparent;
+		width:0%;
+		height:0%;
+		top:-2px;
+	}
+}
+.face .control-dot{
+	width: 100%;
+	height:100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	position: absolute;
+	top:85%;
+}
+
+.face .control-dot .box-dot .dot{
+	width:18px;
+	height:18px;
+	border:2px solid white;
+	border-radius:50%;
+	position: relative;
+	margin:5px;
+}
+.face .control-dot .box-dot .dot-current{
+	background-color:#54BA37;
+}
+.face .control-dot .box-dot .dot img{
+	position: absolute;
+	top:-60px;
+	left:-50px;
+	height:0px;
+	border:2px solid #54BA37;
+	opacity: 0;
+}
+
+@-webkit-keyframes arrowappear{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+.face .control-dot .box-dot .dot .displayimg{
+	animation: imgappear 1s forwards;
+}
+@-webkit-keyframes imgappear{
+	from{
+		width:110px;
+		height:0px;
+		top: -64px;
+		opacity: 0;
+	}
+	to{
+		width:110px;
+		top:-64px;
+		height:48px;
+		opacity: 1;
+	}
+}
+
+.face .control-dot .box-dot .dot .hideimg{
+	animation: hideimg 1s forwards;
+}
+@-webkit-keyframes hideimg{
+	from{
+		width:110px;
+		height:48px;
+		top: -64px;
+		opacity: 1;
+	}
+	to{
+		width:110px;
+		top:-64px;
+		height:0px;
+		opacity: 0;
+	}
+}
+.dot:after{
+	content:'';
+	width:0px;
+	height:0px;
+	border-style:solid;
+	border-width:8px 8px 0px 8px;
+	border-color:#54BA37 transparent transparent transparent;
+	position: absolute;
+	top:-12px;
+	opacity:0;
+}
+.dot.box1:after, .dot.box2:after, .dot.box3:after, .dot.box4:after{
+	animation: arrAppear 2.5s forwards;
+}
+@-webkit-keyframes arrAppear{
+	from{
+		top:-12px;
+		opacity: 0;
+	}
+	to{
+		top:-12px;
+		opacity: 1
+	}
+}
+
+.face .img-content{
+	position: absolute;
+	bottom:100px;
+	left:20px;
+}
+.face .img-content .content{
+	position: absolute;
+	border:2px solid #fff;
+	text-align: center;
+	border-radius:10px;
+	font-family: "Ubuntu", sans-serif;
+	color:#fff;
+	font-size:1.1rem;
+	display: none;
+}
+

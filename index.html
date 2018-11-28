@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="slide.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<title>Slide</title>
+</head>
+<body>
+<section id="slide">
+	<div class = "container slides">
+		<!--large picture-->
+		<div class="picture">
+			<div class="pic1 pic img-current"></div>
+			<div class="pic2 pic"></div>
+			<div class="pic3 pic"></div>
+			<div class="pic4 pic"></div>
+		</div>
+		<!--face-->
+	</div>
+	<div class="face" id="btn">
+		<div class="control-btn">
+			<div id="pre" class="control appear">
+				<i class="fas fa-chevron-left pre-btn"></i>
+			</div>
+			<div id="play" class="control appear">
+				<i class="fas fa-play play-btn"></i>
+			</div>
+			<div id="next" class="control appear">
+				<i class="fas fa-chevron-right next-btn"></i>
+			</div>
+		</div>
+		<!--change slide dot-->
+		<div class="control-dot">
+			<div class="box-dot box1">
+				<div id="dot1" class="dot dot-current" data-index="img1" data-box="box1" data-content="cont1">
+					<img id="img1" src="images/small-1.jpg" alt="small-1">
+				</div>
+			</div>
+			<div class="box-dot box2">
+				<div id="dot2" class="dot" data-index="img2" data-box="box2" data-content="cont2">
+					<img id ="img2" src="images/small-2.jpg" alt="small-2">
+				</div>
+			</div>
+			<div class="box-dot box3">
+				<div id="dot3" class="dot" data-index="img3" data-box="box3" data-content="cont3">
+					<img id="img3" src="images/small-3.jpg" alt="small-3">
+				</div>
+			</div>
+			<div class="box-dot box4" >
+				<div id="dot4" class="dot" data-index="img4" data-box="box4" data-content="cont4">
+					<img id="img4" src="images/small-4.jpg" alt="small-4">
+				</div>
+			</div>
+		</div>
+		<div class="img-content">
+			<div class="content" id="cont1">Roand & Van</div>
+			<div class="content" id="cont2">American Interstate in Utah</div>
+			<div class="content" id="cont3">Storm Cloud Over The Road</div>
+			<div class="content" id="cont4">American Interstate in Utah</div>
+		</div>
+	</div>
+</section>		
+<script type="text/javascript" src="slide.js"></script>
+</body>
+</html>
